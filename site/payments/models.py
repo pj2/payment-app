@@ -97,7 +97,7 @@ class Transfer(models.Model):
     def notify_account_holders(self):
         """Send an email to the holders of both accounts summarizing the
         transfer."""
-        sender = 'noreply@example.com'
+        sender = 'noreply@example.org'
         message_1 = 'You sent {0} to {1}'.format(self.amount, self.dest)
         message_2 = '{0} sent you {1}'.format(self.source, self.amount)
 
