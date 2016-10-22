@@ -1,0 +1,14 @@
+{% extends 'payments/base.html' %}
+
+{% block body %}
+  <div class='container'>
+    <h1>Accounts</h1>
+    {% for account in object_list %}
+      <a href='{% url 'payments:account_detail' account.pk %}'>
+        {{ account.name }}
+        {{ account.email }}
+        {{ account.balance }}
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}

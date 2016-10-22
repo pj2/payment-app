@@ -1,14 +1,15 @@
 from django.views.generic import ListView, DetailView, FormView
+from . import models
 
 
 class AccountList(ListView):
     """Shows a list of all accounts."""
-    pass
+    model = models.Account
 
 
 class AccountDetail(DetailView):
     """Shows a single account and its transfers."""
-    pass
+    model = models.Account
 
 
 class TransferDialog(FormView):
