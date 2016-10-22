@@ -2,7 +2,7 @@ import sys
 from setuptools import setup, find_packages
 
 __version__ = None
-execfile('payments/payments/__init__.py') # Get __version__
+execfile('site/common/__init__.py') # Get __version__
 
 if __version__ is None:
     raise RuntimeError('__version__ not found')
