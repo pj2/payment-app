@@ -5,8 +5,17 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>{% block title %}Payments{% endblock %}</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css'>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
   </head>
-  <body>{% block body %}{% endblock %}</body>
+  <body>
+    <div class='container'>
+      {% for message in messages %}
+        <div class='alert alert-success alert-dismissable'>
+          {{ message }}
+        </div>
+      {% endfor %}
+      <h1>Mega Corp Banking</h1>
+      {% block body %}{% endblock %}
+    </div>
+  </body>
 </html>

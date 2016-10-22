@@ -1,14 +1,17 @@
 {% extends 'payments/base.html' %}
 
 {% block body %}
-  <div class='container'>
-    <h1>Accounts</h1>
-    {% for account in object_list %}
-      <a href='{% url 'payments:account_detail' account.pk %}'>
-        {{ account.name }}
-        {{ account.email }}
-        {{ account.balance }}
-      </a>
-    {% endfor %}
-  </div>
+  {% if object_list %}
+    <ul class='list-group' id='accounts'>
+      {% for account in object_list %}
+        <li class='list-group-item'>
+          <a href='{% url 'payments:account_detail' account.pk %}'>{{ account }}</a> <small>{{ account.balance }}</small>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No accounts found.</p>
+  {% endif %}
+  <a href='{% url 'payments:transfer' %}' class='btn btn-primary'>Make a Transfer</a>
+  <a href='{% url 'payments:create_account' %}' class='btn btn-primary'>Create an Account</a>
 {% endblock %}

@@ -1,9 +1,30 @@
 {% extends 'payments/base.html' %}
 
 {% block body %}
-  <div class='container'>
-    {{ object.name }}
-    {{ object.email }}
-    {{ object.balance }}
-  </div>
+  <h3>{{ object }}</h3>
+  <p>Email: {{ object.email }}<br />Balance: {{ object.balance }}</p>
+  {% with transfers=object.transfers %}
+    {% if transfers %}
+      <table class='table table-hover'>
+        <thead>
+          <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for transfer in transfers %}
+            <tr>
+              <td>{{ transfer.source }}</td>
+              <td>{{ transfer.dest }}</td>
+              <td>{{ transfer.amount }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>There aren't any transfers for this account.</p>
+    {% endif %}
+  {% endwith %}
 {% endblock %}
