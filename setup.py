@@ -16,12 +16,11 @@ setup(
     packages=find_packages(),
     install_requires=[
         'Django==1.10.2',
-    ],
-    tests_require=[
+        'setuptools_scm',
         'mock',
         'pytest',
         'pytest-django',
         'pytest-pythonpath',
         'pytest-xdist',
-    ]
+    ],
 )

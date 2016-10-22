@@ -132,7 +132,7 @@ def test_rollback(accounts):
 @pytest.mark.django_db
 def test_send_email_to_source_and_dest(accounts, monkeypatch):
     """Send an email to the source and dest"""
-    mock_send_mail = mock.Mock(return_value=ValueError)
+    mock_send_mail = mock.Mock()
     monkeypatch.setattr(mail, 'send_mail', mock_send_mail)
 
     transfer = Transfer(
@@ -143,4 +143,4 @@ def test_send_email_to_source_and_dest(accounts, monkeypatch):
     transfer.save()
     transfer.notify_account_holders()
 
-    assert mock.call_count == 2
+    assert mock_send_mail.call_count == 2
